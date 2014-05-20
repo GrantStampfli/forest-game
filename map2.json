@@ -5,68 +5,79 @@
       "north": "D",
       "east": "B",
       "south": null,
-      "west": null,
-      "entrance": "west"
+      "west": null
     },
     {
       "name": "B",
       "north": "E",
       "east": "C",
       "south": null,
-      "west": "A"
+      "west": "A",
+      "entrance": "south"
     },
-     {
+    {
       "name": "C",
-      "north": "F",
+      "north": null,
       "east": null,
       "south": null,
       "west": "B"
     },
-     {
+    {
       "name": "D",
-      "north": null,
+      "north": "G",
       "east": null,
       "south": "A",
       "west": null
     },
-     {
+    {
       "name": "E",
       "north": null,
-      "east": null,
+      "east": "F",
       "south": "B",
       "west": null
     },
-     {
+    {
       "name": "F",
       "north": null,
       "east": null,
-      "south": "C",
-      "west": null
-    }, 
+      "south": null,
+      "west": "E"
+    },
     {
       "name": "G",
-      "north": null,
-      "east": "H",
-      "south": null,
+      "north": "H",
+      "east": null,
+      "south": "D",
       "west": null
     },
     {
       "name": "H",
       "north": null,
       "east": "I",
-      "south": "E",
-      "west": "G"
+      "south": "G",
+      "west": null
     },
     {
       "name": "I",
       "north": null,
+      "east": "J",
+      "south": null,
+      "west": "H"
+    },
+    {
+      "name": "J",
+      "north": null,
+      "east": "K",
+      "south": null,
+      "west": "I"
+    },
+    {
+      "name": "K",
+      "north": null,
       "east": null,
       "south": null,
-      "west": "H",
+      "west": "J",
       "treasure": true
     }
-  
- ]
+  ]
 }
-
-
