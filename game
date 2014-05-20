@@ -1,14 +1,41 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+var readline = require('readline');
+var fs = require('fs');
+var file = process.argv[2];
+var options = { encoding: 'utf8' };
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+fs.readFile(file, options, function (err, contents){
+	var obj = JSON.parse(contents);
+	console.log(obj);
+});
 
-console.log(require('jsi-gamelib').map(require(process.argv[2]))); 
+// rl.question("You are in a room ", function() {
 
-program
-	.option('-n, --north', 'go north')
-	.option('-e, --east', 'go east')
-	.option('-s, --south', 'go south')
-	.option('-w, --west', 'go west')
-	.parse(process.argv);
+  
+ rl.close();
 
-console.log("You travel " + travelDirection + " and see before you " + roomDescription);
+// });
+
+
+
+
+
+
+
+
+
+
+
+// var fs = require('fs');
+// var file = process.argv[2];
+// //var file = '/message.json';
+
+// var options = { encoding: 'utf8' };
+// fs.readFile(file, options, function (err, contents) {
+// 	var obj = JSON.parse(contents);
+// 	console.log(obj.message);
+// });
