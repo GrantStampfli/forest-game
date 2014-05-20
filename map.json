@@ -1,0 +1,79 @@
+{
+  "rooms": [
+  {
+    "name": "A",
+    "north": "D",
+    "east": "B",
+    "south": null,
+    "west": null
+  },
+  {
+    "name": "B",
+    "north": "E",
+    "east": "C",
+    "south": null,
+    "west": "A",
+    "entrance": "west"
+  },
+   {
+    "name": "C",
+    "north": "F",
+    "east": null,
+    "south": null,
+    "west": "B",
+    "entrance": "west"
+  },
+   {
+    "name": null,
+    "north": null,
+    "east": null,
+    "south": "A",
+    "west": null,
+    "entrance": "south"
+  },
+   {
+    "name": "E",
+    "north": null,
+    "east": null,
+    "south": "B",
+    "west": null,
+    "entrance": "south"
+  },
+   {
+    "name": "F",
+    "north": null,
+    "east": null,
+    "south": "C",
+    "west": null,
+    "entrance": "south"
+  }, 
+  {
+    "name": "G",
+    "north": null,
+    "east": "H",
+    "south": null,
+    "west": null,
+    "entrance": "east"
+  },
+  {
+    "name": "H",
+    "north": null,
+    "east": "I",
+    "south": "E",
+    "west": "G",
+    "entrance": "south"
+  },
+  {
+    "name": "I",
+    "north": null,
+    "east": null,
+    "south": null,
+    "west": "H",
+    "entrance": "west",
+    "unicorn-treasure": true
+  }
+  
+ ]
+}
+
+
