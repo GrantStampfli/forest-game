@@ -1,1 +1,14 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
 console.log(require('jsi-gamelib').map(require(process.argv[2]))); 
+
+program
+	.option('-n, --north', 'go north')
+	.option('-e, --east', 'go east')
+	.option('-s, --south', 'go south')
+	.option('-w, --west', 'go west')
+	.parse(process.argv);
+
+console.log("You travel " + travelDirection + " and see before you " + roomDescription);
