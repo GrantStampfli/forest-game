@@ -4,38 +4,41 @@ var readline = require('readline');
 var fs = require('fs');
 var file = process.argv[2];
 var options = { encoding: 'utf8' };
+
+
 var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
+
+
 fs.readFile(file, options, function (err, contents){
 	var obj = JSON.parse(contents);
-	console.log(obj);
+//	console.log(obj);
+	var start = entry(obj.rooms);
+	console.log(start);
+
 });
 
-// rl.question("You are in a room ", function() {
 
-  
+// ['this', 'is', 'an', 'array'].forEach(function(item) {
+// });
+
+var entry = function(obj){
+	var start;
+	obj.forEach(function(room) {
+		if (room.entrance === true) {
+			start = room;
+		}
+	});
+	return start;
+};
+
+
  rl.close();
 
+// rl.question("You are in a room ", function() {
 // });
 
 
-
-
-
-
-
-
-
-
-
-// var fs = require('fs');
-// var file = process.argv[2];
-// //var file = '/message.json';
-
-// var options = { encoding: 'utf8' };
-// fs.readFile(file, options, function (err, contents) {
-// 	var obj = JSON.parse(contents);
-// 	console.log(obj.message);
-// });
