@@ -11,6 +11,20 @@ var rl = readline.createInterface({
   output: process.stdout
 });
 
+
+// save the start room as the current location
+// move from the current location north
+// save the resulting room as the current location
+// move from the currentlocation east
+// at this point, I expect to be in room F
+
+var start = entry();
+var finish = end();
+var currentRoom = start;
+currentRoom = moving(currentRoom, 'north');
+currentRoom = moving(currentRoom, 'east');
+
+
 fs.readFile(file, options, function (err, contents){
 	var obj = JSON.parse(contents);
 //	console.log(obj);
@@ -18,6 +32,8 @@ fs.readFile(file, options, function (err, contents){
 	var finish = end(obj.rooms);
 	console.log(start);
 	console.log(finish);
+	console.log(moving());
+	var userResponse = "north";
 
 });
 // ['this', 'is', 'an', 'array'].forEach(function(item) {
@@ -42,6 +58,19 @@ var end = function(obj){
 	return finish;
 };
 
+var moving = function(obj){
+	var userResponse;
+	var start;
+	var currentRoom;
+	if (userResponse === "north"){
+		currentRoom = start.north;
+	}
+	return currentRoom;
+};
+
+// var currentRoom = function(obj){
+
+// }
 
  rl.close();
 
