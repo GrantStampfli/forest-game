@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+'use strict';
 var readline = require('readline');
 var fs = require('fs');
 var file = process.argv[2];
@@ -11,28 +11,35 @@ var rl = readline.createInterface({
   output: process.stdout
 });
 
-
-
 fs.readFile(file, options, function (err, contents){
 	var obj = JSON.parse(contents);
 //	console.log(obj);
 	var start = entry(obj.rooms);
+	var finish = end(obj.rooms);
 	console.log(start);
+	console.log(finish);
 
 });
-
-
 // ['this', 'is', 'an', 'array'].forEach(function(item) {
 // });
 
 var entry = function(obj){
 	var start;
 	obj.forEach(function(room) {
-		if (room.entrance === true) {
+		if (room.entrance !== undefined) {
 			start = room;
 		}
 	});
 	return start;
+};
+var end = function(obj){
+	var finish;
+	obj.forEach(function(room) {
+		if (room.treasure === true) {
+			finish = room;
+		}
+	});
+	return finish;
 };
 
 
