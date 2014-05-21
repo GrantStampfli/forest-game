@@ -16,7 +16,7 @@ fs.readFile(file, options, function (err, contents){
 	var currentRoom = startRoom;
 	var finishRoom = findFinishRoom(obj.rooms);
 	currentRoom = nextRoom(currentRoom, 'north', obj.rooms);
-	// console.log(currentRoom);
+
 	// at this point, I expect to be in room E
 	// currentRoom = nextRoom(currentRoom, 'east', obj.rooms);
 	// at this point, I expect to be in room F
@@ -47,10 +47,7 @@ var findFinishRoom = function(rooms){
 };
 
 var nextRoom = function(currentRoom, direction, rooms) {
-	var resultRoom;
-	if (direction === 'north') {
-		resultRoom = currentRoom.north;
-	}
+	var resultRoom = currentRoom[direction];
 		rooms.forEach(function(room) {
 		if (room.name === resultRoom) {
 			resultRoom = room;
