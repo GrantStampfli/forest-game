@@ -5,76 +5,57 @@ var fs = require('fs');
 var file = process.argv[2];
 var options = { encoding: 'utf8' };
 
-
 var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-
-// save the start room as the current location
-// move from the current location north
-// save the resulting room as the current location
-// move from the currentlocation east
-// at this point, I expect to be in room F
-
-var start = entry();
-var finish = end();
-var currentRoom = start;
-currentRoom = moving(currentRoom, 'north');
-currentRoom = moving(currentRoom, 'east');
-
-
 fs.readFile(file, options, function (err, contents){
 	var obj = JSON.parse(contents);
-//	console.log(obj);
-	var start = entry(obj.rooms);
-	var finish = end(obj.rooms);
-	console.log(start);
-	console.log(finish);
-	console.log(moving());
-	var userResponse = "north";
+	var startRoom = findStartRoom(obj.rooms);
+	var currentRoom = startRoom;
+	var finishRoom = findFinishRoom(obj.rooms);
+	currentRoom = nextRoom(currentRoom, 'north');
+	// console.log(currentRoom);
+	// at this point, I expect to be in room E
+	// currentRoom = nextRoom(currentRoom, 'east');
+	// at this point, I expect to be in room F
 
+	// console.log(start);
+	// console.log(finish);
+	console.log(currentRoom);
 });
-// ['this', 'is', 'an', 'array'].forEach(function(item) {
-// });
 
-var entry = function(obj){
-	var start;
-	obj.forEach(function(room) {
+var findStartRoom = function(rooms){
+	var resultRoom;
+	rooms.forEach(function(room) {
 		if (room.entrance !== undefined) {
-			start = room;
+			resultRoom = room;
 		}
 	});
-	return start;
+	return resultRoom;
 };
-var end = function(obj){
-	var finish;
-	obj.forEach(function(room) {
+
+var findFinishRoom = function(rooms){
+	var resultRoom;
+	rooms.forEach(function(room) {
 		if (room.treasure === true) {
-			finish = room;
+			resultRoom = room;
 		}
 	});
-	return finish;
+	return resultRoom;
 };
 
-var moving = function(obj){
-	var userResponse;
-	var start;
-	var currentRoom;
-	if (userResponse === "north"){
-		currentRoom = start.north;
+var nextRoom = function(currentRoom, direction) {
+	 direction = 'north';
+	var resultRoom;
+	if (direction === 'north') {
+		resultRoom = currentRoom.north;
 	}
-	return currentRoom;
+	return resultRoom;
 };
 
-// var currentRoom = function(obj){
-
-// }
-
- rl.close();
+rl.close();
 
 // rl.question("You are in a room ", function() {
 // });
-
-
