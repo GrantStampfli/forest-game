@@ -51,8 +51,14 @@ var nextRoom = function(currentRoom, direction, rooms) {
 	if (direction === 'north') {
 		resultRoom = currentRoom.north;
 	}
+		rooms.forEach(function(room) {
+		if (room.name === resultRoom) {
+			resultRoom = room;
+	}	
+	});
 	return resultRoom;
 };
+
 
 rl.close();
 
