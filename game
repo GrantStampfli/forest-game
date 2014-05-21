@@ -15,10 +15,10 @@ fs.readFile(file, options, function (err, contents){
 	var startRoom = findStartRoom(obj.rooms);
 	var currentRoom = startRoom;
 	var finishRoom = findFinishRoom(obj.rooms);
-	currentRoom = nextRoom(currentRoom, 'north');
+	currentRoom = nextRoom(currentRoom, 'north', obj.rooms);
 	// console.log(currentRoom);
 	// at this point, I expect to be in room E
-	// currentRoom = nextRoom(currentRoom, 'east');
+	// currentRoom = nextRoom(currentRoom, 'east', obj.rooms);
 	// at this point, I expect to be in room F
 
 	// console.log(start);
@@ -46,8 +46,7 @@ var findFinishRoom = function(rooms){
 	return resultRoom;
 };
 
-var nextRoom = function(currentRoom, direction) {
-	 direction = 'north';
+var nextRoom = function(currentRoom, direction, rooms) {
 	var resultRoom;
 	if (direction === 'north') {
 		resultRoom = currentRoom.north;
