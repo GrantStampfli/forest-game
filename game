@@ -16,7 +16,7 @@ fs.readFile(file, options, function (err, contents){
 	var currentRoom = startRoom;
 	var finishRoom = findFinishRoom(obj.rooms);
 	currentRoom = nextRoom(currentRoom, 'north', obj.rooms);
-	promptUser(startRoom);
+	promptUser(startRoom, obj.rooms);
 
 	// at this point, I expect to be in room E
 	// currentRoom = nextRoom(currentRoom, 'east', obj.rooms);
@@ -61,14 +61,18 @@ var nextRoom = function(currentRoom, direction, rooms) {
 	return resultRoom;
 };
 
-var promptUser = function(currentRoom){
-	rl.question("where are we going? " + currentRoom, function(response){
+var promptUser = function(currentRoom, rooms){
+	rl.question("where are we going? ", function(response){
 		console.log(response);
+		// currentRoom = nextRoom(currentRoom, response, rooms);
+		promptUser(currentRoom, rooms);
+		
+	// rl.close();
 	});
 };
 
 
-rl.close();
+//rl.close();
 
 // rl.question("You are in a room ", function() {
 // });
